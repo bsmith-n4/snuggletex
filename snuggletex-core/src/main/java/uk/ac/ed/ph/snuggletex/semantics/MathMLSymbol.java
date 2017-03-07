@@ -129,6 +129,7 @@ public interface MathMLSymbol {
     public static final String FORALL = "\u2200";
     public static final String PARTIAL = "\u2202";
     public static final String EXISTS = "\u2203";
+    public static final String NEXISTS = "\u2204";
     public static final String EMPTYSET = "\u2205";
     public static final String NABLA = "\u2207";
     public static final String IN = "\u2208";

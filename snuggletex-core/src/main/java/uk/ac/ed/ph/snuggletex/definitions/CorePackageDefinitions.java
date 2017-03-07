@@ -518,6 +518,8 @@ public final class CorePackageDefinitions {
         corePackage.addSimpleMathCommand("smile", new MathOperatorInterpretation(MathMLSymbol.SMILE));
         corePackage.addSimpleMathCommand("frown", new MathOperatorInterpretation(MathMLSymbol.FROWN));
         corePackage.addSimpleMathCommand("propto", new MathOperatorInterpretation(MathMLSymbol.PROPTO));
+        corePackage.addSimpleMathCommand("nless", new MathOperatorInterpretation(MathMLSymbol.NOT_LESS_THAN));
+        corePackage.addSimpleMathCommand("ngtr", new MathOperatorInterpretation(MathMLSymbol.NOT_GREATER_THAN));
         
         /* Arrows */
         corePackage.addSimpleMathCommand("leftarrow", new MathOperatorInterpretation(MathMLSymbol.LEFTARROW));
@@ -571,6 +573,7 @@ public final class CorePackageDefinitions {
         corePackage.addSimpleMathCommand("angle", new MathOperatorInterpretation(MathMLSymbol.ANGLE));
         corePackage.addSimpleMathCommand("forall", new MathOperatorInterpretation(MathMLSymbol.FORALL));
         corePackage.addSimpleMathCommand("exists", new MathOperatorInterpretation(MathMLSymbol.EXISTS));
+        corePackage.addSimpleMathCommand("nexists", new MathOperatorInterpretation(MathMLSymbol.NEXISTS));
         corePackage.addSimpleMathCommand("neg", new MathOperatorInterpretation(MathMLSymbol.NEG));
         corePackage.addSimpleMathCommand("lnot", new MathOperatorInterpretation(MathMLSymbol.NEG));
         corePackage.addSimpleMathCommand("flat", new MathIdentifierInterpretation(MathMLSymbol.FLAT));
