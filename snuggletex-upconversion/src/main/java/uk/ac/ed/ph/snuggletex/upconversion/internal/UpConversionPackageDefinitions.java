@@ -15,6 +15,7 @@ import uk.ac.ed.ph.snuggletex.SnuggleRuntimeException;
 import uk.ac.ed.ph.snuggletex.definitions.LaTeXMode;
 import uk.ac.ed.ph.snuggletex.upconversion.UpConversionErrorCode;
 
+import java.util.Locale;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
@@ -40,16 +41,16 @@ public final class UpConversionPackageDefinitions {
     static {
         upConversionPackage = new SnugglePackage("UpConversion");
         
-        /* Set up error messages for this package */
+        // Set up error messages for this package
         upConversionPackage.addErrorCodes(UpConversionErrorCode.values());
         try {
-            upConversionPackage.setErrorMessageBundle(ResourceBundle.getBundle(ERROR_MESSAGES_PROPERTIES_BASENAME));
+             upConversionPackage.setErrorMessageBundle(ResourceBundle.getBundle(ERROR_MESSAGES_PROPERTIES_BASENAME, Locale.ENGLISH));
         }
         catch (MissingResourceException e) {
             throw new SnuggleRuntimeException(e);
         }
         
-        /* Special commands for configuring the up-conversion process. */
+        // Special commands for configuring the up-conversion process.
         upConversionPackage.addComplexCommand("setUpConversionOption", false, 2, TEXT_MODE_ONLY, new LaTeXMode[] { LR, LR }, new SetUpConversionOptionHandler(), IGNORE);
         upConversionPackage.addComplexCommand("unsetUpConversionOption", false, 1, TEXT_MODE_ONLY, new LaTeXMode[] { LR }, new UnsetUpConversionOptionHandler(), IGNORE);
         upConversionPackage.addComplexCommand("assumeSymbol", false, 2, TEXT_MODE_ONLY, new LaTeXMode[] { MATH, LR }, new AssumeSymbolHandler(), IGNORE);
