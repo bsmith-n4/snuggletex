@@ -61,7 +61,20 @@ public final class ClassPathURIResolver implements URIResolver {
         if (URI_SCHEME.equals(resolvedUri.getScheme())) {
             /* Strip off the leading '/' from the path */
             String resourceLocation = resolvedUri.getPath().substring(1);
-            InputStream resourceStream = getClass().getClassLoader().getResourceAsStream(resourceLocation);
+            ClassLoader classLoader = getClass().getClassLoader();
+            if (classLoader == null) {
+                /*
+                 * Some classloaders return null in case of the bootstrap class
+                 * loader. See:
+                 * http://docs.oracle.com/javase/6/docs/api/java/lang/Class.html
+                 * #getClassLoader()
+                 */
+                classLoader = ClassLoader.getSystemClassLoader();
+                if (classLoader == null) {
+                    throw new IllegalStateException("ClassLoader is null");
+                }
+            }
+            InputStream resourceStream = classLoader.getResourceAsStream(resourceLocation);
             if (resourceStream!=null) {
                 result = new StreamSource(resourceStream, resolvedUri.toString());
             }
